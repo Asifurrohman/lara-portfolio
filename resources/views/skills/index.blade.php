@@ -34,16 +34,15 @@
                             {{ $skill->name }}
                         </th>
                         <td class="px-6 py-4">
-                            <img src="{{ asset('storage/'. $skill->image) }}" class="w-12 h-12" alt=""/>
+                            <img src="{{ asset('storage/'. $skill->image) }}" class="w-48 transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0" alt=""/>
                         </td>
                         <td class="flex justify-end px-6 py-4">
                             <a href="{{ route('skills.edit', $skill->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3">Edit</a>
                             <form action="{{ route('skills.destroy', $skill->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ route('skills.destroy', $skill->id) }}" class="font-medium text-red-600 dark:text-blue-500 hover:underline mr-3" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    Delete
-                                </a>
+                                <button type="submit" class="font-medium text-red-600 dark:text-blue-500 hover:underline mr-3" onclick="return confirm('Are you sure to delete this file?')">Delete</button>
+                                
                             </form>
                         </td>
                     </tr>
